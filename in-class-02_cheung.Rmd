@@ -81,8 +81,10 @@ There are negative numbers in the histogram.
 
 ```{r}
 
-  
-which(rain.df<0)
+rain.df.fixed <- rain.df
+rain.df.fixed[rain.df.fixed == -999] = NA
+rain.df.fixed$daily <- rowSums(rain.df.fixed[4:27])
+hist(rain.df.fixed$daily)
 
 ```
 
