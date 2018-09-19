@@ -1,5 +1,4 @@
 
-library(dplyr)
 #Part 1
 
 #1) 
@@ -35,12 +34,32 @@ rain.df.fixed$daily = rowSums(rain.df.fixed[,4:27])
 hist(rain.df.fixed$daily, main = "Histogram of rain in Canada (1960-1980)", xlab = "Precipitation", ylab = "days")
 
 
+
 #Part 2
 
+library(nycflights13)
+library(dplyr)
+flights
+
 #1)
+flights %>%
+  filter(month == 3, day == 30)
 
+#2)
+flights %>%
+  filter(row_number()%in%567:589)
 
+#3)
+flights %>%
+  arrange(year, month, day)
 
+#4)
+flights %>%
+  arrange(desc(arr_delay))
+
+#5)
+flights %>%
+  
 
 
 
