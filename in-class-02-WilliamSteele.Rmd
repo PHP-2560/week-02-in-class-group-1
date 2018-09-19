@@ -114,14 +114,22 @@ flights %>%
 
 2. Filter all flights in rows 567 - 589
 ``` {r}
-
+flights %>%
+  filter(row_number() %in% 567:589)
 
 ```
 
 ### Arranging Rows
 3. Use arrange() to order the data by year, month and day
-4. Use desc() to arrange flights by arrival delay.
+``` {r}
+flights %>%
+  arrange(year, month, day)
+```
 
+4. Use desc() to arrange flights by arrival delay.
+``` {r}
+
+```
 
 ### Select
 5. Select columns containing date information.
