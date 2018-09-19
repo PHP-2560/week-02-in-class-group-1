@@ -3,6 +3,7 @@
 
 ## Part 1 (You can do this with or without dplyr)
 
+<<<<<<< HEAD
 
 1. The data set at rnf6080.dat records hourly rainfall at a certain location in Canada, every day from 1960 to 1980. First, we need to load the data set into R using the command read.table(). Use the help function to learn what arguments this function takes. Once you have the necessary input, load the data set into R and make it a data frame called rain.df.
 
@@ -10,13 +11,38 @@
 install.packages("dplyr")
 library(dplyr)
 
-data <- ()
+# load data as rain.df
+rain.df <- read.table("rnf6080.dat")
 
 ```
 
 2. How many rows and columns does rain.df have? (If there are not 5070 rows and 27 columns, something is wrong; check the previous part to see what might have gone wrong in the previous part.)
+
+```{r}
+# number of columns is 27
+length(head(rain.df))
+
+# number of rows is 5070
+length(rain.df[,1])
+
+```
+
 3. What are the names of the columns of rain.df?
+
+```{r}
+# list of names of columns
+var_names <- c(head(rain.df))
+
+```
+
 4. What is the value of row 5, column 7 of rain.df?
+
+```{r}
+
+
+
+```
+
 5. Display the second row of rain.df in its entirety.
 6. Explain what the command below doesby running it on your data and examining the object. (You may find the display functions head() and tail() useful here.) Is it clear now what the last 24 columns represent?
 ```
