@@ -82,7 +82,8 @@ hist(rain.df.fixed$daily)
 - `airports` [1397 x 7]. Airport data.
 
 
-```
+``` {r}
+install.packages("nycflights13")
 library(nycflights13)
 library(dplyr)
 flights
@@ -102,8 +103,20 @@ The `dplyr` package uses verbs to perform data manipulation.
 ### Filtering Rows
 
 1. Filter all flights on your birthday.
-2. Filter all flights in rows 567 - 589
+``` {r}
+str(flights)
+names(flights)
 
+flights %>%
+  filter(month == 1 & day == 15)
+
+```
+
+2. Filter all flights in rows 567 - 589
+``` {r}
+
+
+```
 
 ### Arranging Rows
 3. Use arrange() to order the data by year, month and day
