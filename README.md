@@ -5,7 +5,7 @@ Have one person fill in the names of who is doing this:
 1. Kitty Cheung
 2. Charles Steele
 3. William Steele
-4. Lucas Paolo De Lima Camillo
+4. Lucas Paulo De Lima Camillo
 
 # In-Class
 
