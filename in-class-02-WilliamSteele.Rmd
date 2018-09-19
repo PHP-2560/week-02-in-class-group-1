@@ -6,7 +6,7 @@
 1. The data set at rnf6080.dat records hourly rainfall at a certain location in Canada, every day from 1960 to 1980. First, we need to load the data set into R using the command read.table(). Use the help function to learn what arguments this function takes. Once you have the necessary input, load the data set into R and make it a data frame called rain.df.
 ``` {r}
 ?read.table
-rain.df = read.table("http://people.math.umass.edu/~anna/Stat535Fall2017/rnf6080.dat", header = FALSE)
+rain.df = read.table("rnf6080.dat", header = FALSE)
 
 ```
 
@@ -44,9 +44,15 @@ rain.df[2,]
 ```{r}
 names(rain.df) <- c("year","month","day",seq(0,23))
 head(rain.df)
+tail(rain.df)
+# this function labels the first 3 columns as year, month, and day, and then proceeds to label the next 23 columns as a queue from 0:23. It is clear now that the last 24 columns represents the 24 hours in a day
+
 ```
 
+
 7. Create a new column in the data frame called daily, which is the sum of the rightmost 24 columns. With this column, create a histogram of the values in this column, which are supposed to be daily rainfall values. What is wrong with this picture?
+
+
 8. Create a new data frame rain.df.fixed that takes the original and fixes it for the apparent flaw you have discovered. Having done this, produce a new histogram with the corrected data and explain why this is more reasonable.
 
 ## Part 2
