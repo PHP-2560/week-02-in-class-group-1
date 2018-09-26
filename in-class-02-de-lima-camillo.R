@@ -36,9 +36,11 @@ hist(rain.df.fixed$daily, main = "Histogram of rain in Canada (1960-1980)", xlab
 
 
 #Part 2
+
 install.packages("nycflights13")
 library(nycflights13)
 library(dplyr)
+library(ggplot2)
 
 #1)
 flights %>%
@@ -57,13 +59,16 @@ flights %>%
   arrange(desc(arr_delay))
 
 #5)
-
+flights %>%
+  select(year:day)
+  
 #6)
 flights %>%
-  select(tailnum)
+  select(tailnum, carrier)
 
 #7)
-colnames(flights)[12] = "tail_num"
+flights %>%
+  rename(tail_num = tailnum)
 
 #8)
 flights %>%
@@ -75,12 +80,11 @@ flights %>%
 
 #10)
 flights %>%
-  group_by(flight) %>%
   summarise(avg = mean(arr_delay, na.rm = TRUE))
 
 #11)
 flights %>%
-  group_by(flight) %>%
+  group_by(tailnum) %>%
   summarise(count = n(), dist = mean(distance, na.rm = TRUE), delay = mean(arr_delay, na.rm = TRUE)) %>%
   ggplot(aes(dist,delay)) +
   geom_point(aes(size = count), alpha = 1/2) +
@@ -90,21 +94,21 @@ flights %>%
 #12)
 flights %>%
   group_by(dest) %>%
-  summarise(n_flights = n_distinct(flight), n_planes = n_distinct(tail_num))
+  summarise(n_flights = n(), n_planes = n_distinct(tailnum))
 
 #13)
-#a- this function is not very legible and is difficult to understand what is going on
+#a- this function is not very legible and is difficult to understand what is going on, including the not necessary select verb
 #b- very difficult
 #c- 
 flights %>%
   group_by(year, month, day) %>%
-  select(arr_delay, dep_delay) %>%
+  select(arr_delay, dep_delay) %>% #this line does not do anything, but it is in the original code
   summarise(arr = mean(arr_delay, na.rm = TRUE), dep = mean(dep_delay, na.rm = TRUE)) %>%
   filter(arr > 30 | dep > 30)
-#d- it giver the same results
+#d- it gives the same results
 
 #14)
-#a- hard to read and understand what it is supposed to do
+#a- hard to read and understand what it is supposed to do; there is no date column, so you would have to change it to year, month, an day
 #b- very difficult
 #c- 
 hourly_delay = flights %>%
@@ -113,7 +117,6 @@ hourly_delay = flights %>%
   summarise(delay = mean(dep_delay), n=n()) %>%
   filter(n>10)
 #d- it gives the same results
-
 
 
 
